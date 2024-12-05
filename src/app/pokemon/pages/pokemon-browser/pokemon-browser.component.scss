@@ -1,3 +1,14 @@
+:host {
+  height: 100%;
+  display: block;
+}
+
+.list-container {
+  height: 100%;
+  display: block;
+  overflow-y: scroll;
+}
+
 ul {
   display: flex;
   flex-direction: column;
