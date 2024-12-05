@@ -1,0 +1,5 @@
+<ul>
+  @for(p of (pokemon$ | async); track p){
+    <pokemon-view-card [name]="p.name" [weight]="p.weight" [spriteUrl]="p.sprites.front_default"></pokemon-view-card>
+  }
+</ul>

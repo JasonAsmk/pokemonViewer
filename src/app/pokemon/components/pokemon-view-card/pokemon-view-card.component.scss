@@ -1,0 +1,47 @@
+:host {
+  background: var(--soft-white);
+}
+
+.flex-container {
+  width: 500px;
+  height: 100px;
+
+  border: solid 0.5px var(--basic-black);
+  border-radius: 4px;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+}
+
+.image-container {
+  height: 80px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.details-name {
+  text-transform: capitalize;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.details-data {
+  font-size: 16px;
+  line-height: 22px;
+}
