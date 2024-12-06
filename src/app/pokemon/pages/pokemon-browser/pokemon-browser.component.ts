@@ -11,16 +11,18 @@ import { IPokemonServerModel } from '../../models/pokemon.server.model';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { fromEvent, map, Subject, throttleTime } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @UntilDestroy()
 @Component({
   selector: 'pokemon-browser',
-  imports: [PokemonViewCard, AsyncPipe],
+  imports: [PokemonViewCard, NgxSkeletonLoaderModule, AsyncPipe],
   templateUrl: './pokemon-browser.component.html',
   styleUrl: './pokemon-browser.component.scss',
 })
 export class PokemonBrowserPageComponent implements OnInit, AfterViewInit {
   public pokemon$ = new Subject<IPokemonServerModel[]>();
+  public showSkeleton = false;
 
   @ViewChild('list') list!: ElementRef;
 
@@ -29,7 +31,12 @@ export class PokemonBrowserPageComponent implements OnInit, AfterViewInit {
   public ngOnInit(): void {
     this._pokemonService.pokemons$
       .pipe(untilDestroyed(this))
-      .subscribe((newSet) => this.pokemon$.next(newSet));
+      .subscribe((newSet) => {
+        this.pokemon$.next(newSet);
+        if (this.showSkeleton) {
+          this.showSkeleton = false;
+        }
+      });
   }
 
   public ngAfterViewInit(): void {
@@ -54,6 +61,8 @@ export class PokemonBrowserPageComponent implements OnInit, AfterViewInit {
     const height = container.scrollHeight;
 
     if (position >= height - threshold) {
+      this.showSkeleton = true;
+
       this._pokemonService.getNextPokemonSet();
     }
   }

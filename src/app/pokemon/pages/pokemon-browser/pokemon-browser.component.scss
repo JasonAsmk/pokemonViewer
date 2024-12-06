@@ -16,3 +16,13 @@ ul {
   align-items: center;
   justify-content: center;
 }
+
+ngx-skeleton-loader {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.hide-skeleton {
+  display: none;
+}

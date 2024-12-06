@@ -1,7 +1,12 @@
 <div class="list-container" #list>
   <ul>
+
     @for(p of (pokemon$ | async); track p){
       <pokemon-view-card [name]="p.name" [weight]="p.weight" [spriteUrl]="p.sprites.front_default"></pokemon-view-card>
+    }
+
+    @if(showSkeleton) {
+      <ngx-skeleton-loader count="20" [theme]="{ 'border-radius': '0', height: '133px', width: '533px'}"></ngx-skeleton-loader>
     }
   </ul>
 </div>
