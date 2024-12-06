@@ -1,6 +1,12 @@
 # Pokemon Viewer
 
-A simple frontend for the pokemon API.
+A simple frontend for the pokemon API. Shows an infinite scroll with pokemon cards.
+
+![example](example.png)
+
+## Installation
+
+Run `npm install`
 
 ## Development server
 
